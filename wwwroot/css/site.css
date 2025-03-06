@@ -1,0 +1,42 @@
+
+.content {
+    background: rgba(255, 255, 255, 0.9); /* 背景を半透明 */
+    padding: 20px;
+    border-radius: 10px;
+  }
+  
+  
+  /* メインコンテンツ */
+  main {
+    background-color: #ffffff; /* メインコンテンツの背景色 */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  body {
+    background-image: url('../img/okkeian_backG.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed; /* 背景をスクロールしても固定 */
+  }
+  
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+
+  }
+  
+  .main-content {
+    width: 75%; /* メインコンテンツの幅 */
+    padding: 10px; /* 必要なパディングを追加 */
+    flex: 0 0 75%; /* col-md-9に対応 */
+  }
+  /* レスポンシブ対応 */
+  @media (max-width: 768px) {
+    aside {
+        margin-bottom: 20px; /* モバイルのためにサイドバーにマージン */
+    }
+  }
+  

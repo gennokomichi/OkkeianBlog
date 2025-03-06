@@ -1,0 +1,60 @@
+/* wwwroot/css/sidebar.css */
+/* サイドバーの基本スタイル */
+.sidebar {
+    background-color: #f4f4f4; /* サイドバーの背景色 */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    width: 250px; /* 初期幅 */
+    flex: 0 0 25%; /* col-md-3に対応 */
+}
+
+/* サイドバー内の見出し */
+.sidebar h3 {
+    color: #2c3e50; /* 渋めの青 */
+    font-size: 1.2em;
+    margin-bottom: 15px;
+}
+
+/* サイドバー内のリスト */
+.sidebar ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+/* リストアイテムのスタイル */
+.sidebar ul li {
+    margin: 10px 0;
+}
+
+/* リストのリンクスタイル */
+.sidebar ul li a {
+    text-decoration: none;
+    color: #336633; /* 深緑 */
+    font-weight: bold;
+}
+
+/* リンクのホバー時の色変更 */
+.sidebar ul li a:hover {
+    color: #8B4513; /* 渋い茶色 */
+}
+
+/* リンクのホバー時の色変更 */
+/* サイドバー用の小さいサムネイル */
+.sidebar-thumbnail {
+    width: 100px;  /* サイドバーのサムネイルを小さくする */
+    height: auto;  /* アスペクト比を維持 */
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+
+
+
+/* サイドバーのレスポンシブ対応 */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 100%; /* 幅を100%に変更 */
+        padding: 15px;
+    }
+}

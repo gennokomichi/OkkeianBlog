@@ -1,0 +1,51 @@
+@model OkkeianBlog.Models.Article
+
+@{
+    ViewData["Title"] = "記事編集";
+}
+
+<head>
+    <link href="~/css/editor.css" rel="stylesheet" />
+</head>
+
+<h1>@ViewData["Title"]</h1>
+
+<form asp-action="Edit" enctype="multipart/form-data"> <!-- enctype追加 -->
+    <div class="form-group">
+        <label asp-for="Title" class="control-label"></label>
+        <input asp-for="Title" class="form-control" required />
+        <span asp-validation-for="Title" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Content" class="control-label"></label>
+        <textarea asp-for="Content" id="Content" class="form-control">@Model.Content</textarea>
+        <span asp-validation-for="Content" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Author" class="control-label"></label>
+        <input asp-for="Author" class="form-control" required />
+        <span asp-validation-for="Author" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="PublishDate" class="control-label"></label>
+        <input asp-for="PublishDate" type="date" class="form-control" required />
+        <span asp-validation-for="PublishDate" class="text-danger"></span>
+    </div>
+
+    <!-- サムネイル画像アップロード -->
+    <div class="form-group">
+        <label for="Thumbnail" class="control-label">サムネイル画像</label>
+        <input type="file" id="Thumbnail" name="Thumbnail" class="form-control" />
+        <span class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">保存</button>
+</form>
+
+<a href="@Url.Action("Index", "Admin")">記事一覧に戻る</a>
+
+<script src="https://cdn.ckeditor.com/ckeditor5/40.0.0/classic/ckeditor.js"></script>
+<script src="~/js/ckeditor-init.js"></script>

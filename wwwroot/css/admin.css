@@ -1,0 +1,19 @@
+.admin-panel {
+    background-color: #f8f9fa;
+    padding: 20px;
+}
+
+.admin-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.admin-table th, .admin-table td {
+    border: 1px solid #ddd;
+    padding: 10px;
+}
+
+.admin-table th {
+    background-color: #007bff;
+    color: #fff;
+}

@@ -1,0 +1,64 @@
+.article-container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.comment-section {
+    margin-top: 20px;
+    border-top: 1px solid #ddd;
+    padding-top: 10px;
+}
+
+/* article.css */
+
+/* 記事カードの基本スタイル */
+.article-card {
+    border: 1px solid #ddd; /* 枠線 */
+    padding: 15px; /* 内側の余白 */
+    margin: 15px 0; /* 上下の余白 */
+    display: flex; /* サムネイルとテキストを横並びに */
+    background-color: #f9f9f9; /* 背景色 */
+    border-radius: 8px; /* 角を丸める */
+    transition: transform 0.3s ease; /* ホバー時に拡大 */
+}
+
+.article-card:hover {
+    transform: scale(1.05); /* ホバー時にカードが少し大きくなる */
+}
+
+/* サムネイル画像 */
+.article-thumbnail img {
+    width: 100px; /* 画像の幅 */
+    height: auto; /* 高さを自動調整 */
+    margin-right: 15px; /* サムネイルとテキストの間の余白 */
+    border-radius: 8px; /* サムネイル画像の角を丸める */
+}
+
+/* 記事内容のスタイル */
+.article-content {
+    flex: 1; /* テキスト部分を伸ばす */
+}
+
+/* 記事タイトルのスタイル */
+.article-title {
+    font-size: 1.25rem; /* フォントサイズ */
+    font-weight: bold; /* 太字 */
+    margin-bottom: 10px; /* 下の余白 */
+}
+
+/* 記事の抜粋部分 */
+.article-excerpt {
+    font-size: 1rem; /* フォントサイズ */
+    color: #555; /* 色 */
+}
+
+/* 投稿日のスタイル */
+.article-date {
+    font-size: 0.875rem;
+    color: #888;
+    margin-top: 10px;
+}
+
+

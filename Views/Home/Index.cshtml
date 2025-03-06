@@ -1,0 +1,60 @@
+﻿@model IEnumerable<OkkeianBlog.Models.ArticleSummaryViewModel>
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+<link rel="stylesheet" href="~/css/article.css" />
+<link rel="stylesheet" href="~/css/sidebar.css" />
+
+
+
+<div class="container">
+    <!-- メインコンテンツ -->
+    <div class="main-content">
+        <h2>最新記事</h2>
+        <div class="article-list">
+            @foreach (var article in Model)
+            {
+                if (article != null)
+                {
+                    <div class="article-card">
+                        <!-- サムネイル画像の表示 -->
+                        <div class="article-thumbnail">
+                            <img src="@Url.Content(!string.IsNullOrEmpty(article.Thumbnail) ? article.Thumbnail : "/uploads/default-thumbnail.jpg")" 
+                                 alt="サムネイル画像">
+                        </div>
+
+                        <!-- 記事内容 -->
+                        <div class="article-content">
+                            <h3 class="article-title">
+                                <a href="@Url.Action("ArticleDetails", "Home", new { id = article.Id })">@article.Title</a>
+                            </h3>
+
+                            <div class="article-excerpt">
+                                @Html.Raw(article.Content ?? "内容なし")
+                            </div>
+
+                            @if (article.PublishDate != DateTime.MinValue)
+                            {
+                                <span class="article-date">（@article.PublishDate.ToString("yyyy年MM月dd日")）</span>
+                            }
+                            else
+                            {
+                                <span class="article-date">投稿日なし</span>
+                            }
+                        </div>
+                    </div>
+                }
+            }
+        </div>
+    </div>
+
+</div>
+
+<!-- 管理者用ページへのリンク -->
+@if (User.IsInRole("Admin"))
+{
+    <div class="admin-link">
+        <a href="@Url.Action("Index", "Admin")">管理者ページ</a>
+    </div>
+}

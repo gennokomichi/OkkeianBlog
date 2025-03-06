@@ -1,0 +1,39 @@
+@model OkkeianBlog.Models.Article
+
+<link rel="stylesheet" href="~/css/article.css" />
+
+<h1>@Model.Title</h1>
+<p>投稿日時: @Model.PublishDate.ToString("yyyy年MM月dd日 HH:mm")</p>
+
+<!-- サムネイル画像の表示 -->
+@if (!string.IsNullOrEmpty(Model.ThumbnailPath))
+{
+    <div>
+        <img src="@(string.IsNullOrEmpty(Model.ThumbnailPath) ? Url.Content("~/uploads/default-thumbnail.jpg") : Model.ThumbnailPath)" alt="サムネイル画像" />
+    </div>
+}
+
+<p>@Model.Content</p>  <!-- 記事の内容 -->
+
+<h3>コメント</h3>
+@foreach (var comment in Model.Comments.OrderByDescending(c => c.PostDate))
+{
+    <div class="comment">
+        <p><strong>@comment.Author</strong>: @comment.Content</p>
+        <p>@comment.PostDate.ToString("yyyy年MM月dd日 HH:mm")</p>
+    </div>
+}
+
+<h3>コメント投稿</h3>
+<form method="post" asp-action="PostComment">
+    <input type="hidden" name="articleId" value="@Model.Id" />
+    <div>
+        <label for="author">お名前:</label>
+        <input type="text" name="author" id="author" required />
+    </div>
+    <div>
+        <label for="content">コメント:</label>
+        <textarea name="content" id="content" required></textarea>
+    </div>
+    <button type="submit">投稿</button>
+</form>

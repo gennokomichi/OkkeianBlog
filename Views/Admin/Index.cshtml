@@ -1,0 +1,30 @@
+@model IEnumerable<OkkeianBlog.Models.Article>
+
+<h1>記事一覧</h1>
+
+<a href="@Url.Action("Create", "Admin")" class="btn btn-primary">新規作成</a>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>タイトル</th>
+            <th>投稿者</th>
+            <th>投稿日</th>
+            <th>操作</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var article in Model)
+        {
+            <tr>
+                <td>@article.Title</td>
+                <td>@article.Author</td>
+                <td>@(article.PublishedAt.HasValue ? article.PublishedAt.Value.ToString("yyyy/MM/dd HH:mm") : "未公開")</td>
+                <td>
+                    <a href="@Url.Action("Edit", "Admin", new { id = article.Id })" class="btn btn-warning">編集</a>
+                    <a href="@Url.Action("Delete", "Admin", new { id = article.Id })" class="btn btn-danger">削除</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

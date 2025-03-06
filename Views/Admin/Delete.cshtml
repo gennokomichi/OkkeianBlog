@@ -1,0 +1,20 @@
+@model OkkeianBlog.Models.Article
+
+@{
+    ViewData["Title"] = "記事削除確認";
+}
+
+<h1>記事削除確認</h1>
+
+<div>
+    <h3>本当にこの記事を削除しますか？</h3>
+    <p>タイトル: @Model.Title</p>
+    <p>投稿者: @Model.Author</p>
+    <p>投稿日: @(Model.PublishedAt.HasValue ? Model.PublishedAt.Value.ToString("yyyy/MM/dd HH:mm") : "未公開")</p>
+</div>
+
+<form asp-action="Delete" method="post">
+    <input type="hidden" asp-for="Id" />
+    <button type="submit" class="btn btn-danger">削除</button>
+    <a href="@Url.Action("Index", "Admin")" class="btn btn-secondary">キャンセル</a>
+</form>

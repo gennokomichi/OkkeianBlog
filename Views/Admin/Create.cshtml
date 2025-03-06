@@ -1,0 +1,39 @@
+@model OkkeianBlog.Models.Article
+
+@{
+    ViewData["Title"] = "新規投稿";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<form asp-action="Create" method="post" enctype="multipart/form-data">
+    <div class="form-group">
+        <label for="Title">タイトル</label>
+        <input asp-for="Title" class="form-control" />
+    </div>
+
+ <div class="form-group">
+        <label for="Content">本文</label>
+        <textarea asp-for="Content" class="form-control"></textarea>
+    </div>
+
+<div class="form-group">
+        <label for="uploadedFile">サムネイル画像</label>
+        <input type="file" name="uploadedFile" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label for="Author">著者名</label>
+        <input type="text" class="form-control" id="Author" name="Author" required />
+    </div>
+
+    <div class="form-group">
+        <label for="PublishDate">公開日</label>
+        <input type="date" class="form-control" id="PublishDate" name="PublishDate" required />
+    </div>
+
+    <button type="submit" class="btn btn-primary">投稿</button>
+</form>
+
+<script src="https://cdn.ckeditor.com/ckeditor5/40.0.0/classic/ckeditor.js"></script>
+<script src="~/js/ckeditor-init.js"></script>
