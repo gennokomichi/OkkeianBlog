@@ -18,6 +18,54 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = /home/ok/okkeianBlog
 build_property._RazorSourceGeneratorDebug = 
 
+[/home/ok/okkeianBlog/OkkeianBlog/Views/Admin/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = T2trZWlhbkJsb2cvVmlld3MvQWRtaW4vQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/ok/okkeianBlog/OkkeianBlog/Views/Admin/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = T2trZWlhbkJsb2cvVmlld3MvQWRtaW4vRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/ok/okkeianBlog/OkkeianBlog/Views/Admin/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = T2trZWlhbkJsb2cvVmlld3MvQWRtaW4vRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/ok/okkeianBlog/OkkeianBlog/Views/Admin/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = T2trZWlhbkJsb2cvVmlld3MvQWRtaW4vSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/ok/okkeianBlog/OkkeianBlog/Views/Article/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = T2trZWlhbkJsb2cvVmlld3MvQXJ0aWNsZS9JbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/ok/okkeianBlog/OkkeianBlog/Views/Home/ArticleDetails.cshtml]
+build_metadata.AdditionalFiles.TargetPath = T2trZWlhbkJsb2cvVmlld3MvSG9tZS9BcnRpY2xlRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/ok/okkeianBlog/OkkeianBlog/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = T2trZWlhbkJsb2cvVmlld3MvSG9tZS9JbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/ok/okkeianBlog/OkkeianBlog/Views/Home/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = T2trZWlhbkJsb2cvVmlld3MvSG9tZS9Qcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/ok/okkeianBlog/OkkeianBlog/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = T2trZWlhbkJsb2cvVmlld3MvU2hhcmVkL0Vycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/ok/okkeianBlog/OkkeianBlog/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = T2trZWlhbkJsb2cvVmlld3MvU2hhcmVkL19WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/ok/okkeianBlog/OkkeianBlog/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = T2trZWlhbkJsb2cvVmlld3MvX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/ok/okkeianBlog/OkkeianBlog/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = T2trZWlhbkJsb2cvVmlld3MvX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [/home/ok/okkeianBlog/Views/Account/Login.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWNjb3VudC9Mb2dpbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -77,6 +125,10 @@ build_metadata.AdditionalFiles.CssScope =
 [/home/ok/okkeianBlog/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
+
+[/home/ok/okkeianBlog/OkkeianBlog/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = T2trZWlhbkJsb2cvVmlld3MvU2hhcmVkL19MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-5rrlsszdu1
 
 [/home/ok/okkeianBlog/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL19MYXlvdXQuY3NodG1s
