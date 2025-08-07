@@ -5,6 +5,10 @@
       "PackagePath": "staticwebassets/okkeianBlog.bundle.scp.css"
     },
     {
+      "Id": "/home/ok/okkeianBlog/wwwroot/css/about.css",
+      "PackagePath": "staticwebassets/css/about.css"
+    },
+    {
       "Id": "/home/ok/okkeianBlog/wwwroot/css/admin.css",
       "PackagePath": "staticwebassets/css/admin.css"
     },
@@ -13,12 +17,20 @@
       "PackagePath": "staticwebassets/css/article.css"
     },
     {
+      "Id": "/home/ok/okkeianBlog/wwwroot/css/comment.css",
+      "PackagePath": "staticwebassets/css/comment.css"
+    },
+    {
       "Id": "/home/ok/okkeianBlog/wwwroot/css/header.css",
       "PackagePath": "staticwebassets/css/header.css"
     },
     {
       "Id": "/home/ok/okkeianBlog/wwwroot/css/homeindex.css",
       "PackagePath": "staticwebassets/css/homeindex.css"
+    },
+    {
+      "Id": "/home/ok/okkeianBlog/wwwroot/css/rss-feed.css",
+      "PackagePath": "staticwebassets/css/rss-feed.css"
     },
     {
       "Id": "/home/ok/okkeianBlog/wwwroot/css/sidebar.css",
@@ -277,8 +289,20 @@
       "PackagePath": "staticwebassets/lib/jquery/dist/jquery.min.map"
     },
     {
+      "Id": "/home/ok/okkeianBlog/wwwroot/uploads/049011000285001_600.jpg",
+      "PackagePath": "staticwebassets/uploads/049011000285001_600.jpg"
+    },
+    {
+      "Id": "/home/ok/okkeianBlog/wwwroot/uploads/09b5e38e-9cc8-4bbe-9517-a8e743a59869.jpg",
+      "PackagePath": "staticwebassets/uploads/09b5e38e-9cc8-4bbe-9517-a8e743a59869.jpg"
+    },
+    {
       "Id": "/home/ok/okkeianBlog/wwwroot/uploads/0ycxx34e.vub.png",
       "PackagePath": "staticwebassets/uploads/0ycxx34e.vub.png"
+    },
+    {
+      "Id": "/home/ok/okkeianBlog/wwwroot/uploads/1966ベトナム_color.jpg",
+      "PackagePath": "staticwebassets/uploads/1966ベトナム_color.jpg"
     },
     {
       "Id": "/home/ok/okkeianBlog/wwwroot/uploads/1e70425e.gif",
@@ -293,8 +317,20 @@
       "PackagePath": "staticwebassets/uploads/2103_sp_part (1).jpg"
     },
     {
+      "Id": "/home/ok/okkeianBlog/wwwroot/uploads/293d49fa-4592-44f7-8989-dc8da47742ba.jpg",
+      "PackagePath": "staticwebassets/uploads/293d49fa-4592-44f7-8989-dc8da47742ba.jpg"
+    },
+    {
+      "Id": "/home/ok/okkeianBlog/wwwroot/uploads/366a9e8a-0474-41d1-b82f-8ee15daf8ee2.jpg",
+      "PackagePath": "staticwebassets/uploads/366a9e8a-0474-41d1-b82f-8ee15daf8ee2.jpg"
+    },
+    {
       "Id": "/home/ok/okkeianBlog/wwwroot/uploads/4k06.jpg",
       "PackagePath": "staticwebassets/uploads/4k06.jpg"
+    },
+    {
+      "Id": "/home/ok/okkeianBlog/wwwroot/uploads/5449a36f8ffc3b80c1c623d267d0de10_t.jpeg",
+      "PackagePath": "staticwebassets/uploads/5449a36f8ffc3b80c1c623d267d0de10_t.jpeg"
     },
     {
       "Id": "/home/ok/okkeianBlog/wwwroot/uploads/7bc71a59f0a328c7dea89e9f0bfcf7a9.jpg",
@@ -313,6 +349,14 @@
       "PackagePath": "staticwebassets/uploads/MAKOTO-AO.jpg"
     },
     {
+      "Id": "/home/ok/okkeianBlog/wwwroot/uploads/NifXrynfSWzlodJRIBs4TeW8vvxR2hXM36JuBIJ3__1652_1239.jpg",
+      "PackagePath": "staticwebassets/uploads/NifXrynfSWzlodJRIBs4TeW8vvxR2hXM36JuBIJ3__1652_1239.jpg"
+    },
+    {
+      "Id": "/home/ok/okkeianBlog/wwwroot/uploads/Photo_Author_Kan_Kikuchi_Smoking_color.jpg",
+      "PackagePath": "staticwebassets/uploads/Photo_Author_Kan_Kikuchi_Smoking_color.jpg"
+    },
+    {
       "Id": "/home/ok/okkeianBlog/wwwroot/uploads/______________________78c6a1.mp4",
       "PackagePath": "staticwebassets/uploads/______________________78c6a1.mp4"
     },
@@ -325,8 +369,20 @@
       "PackagePath": "staticwebassets/uploads/b3cb4f64f4f525bf7fc78af277ad071f.jpg"
     },
     {
+      "Id": "/home/ok/okkeianBlog/wwwroot/uploads/cee03e15-ffbb-4452-ba0d-c2638bdb0909.jpg",
+      "PackagePath": "staticwebassets/uploads/cee03e15-ffbb-4452-ba0d-c2638bdb0909.jpg"
+    },
+    {
+      "Id": "/home/ok/okkeianBlog/wwwroot/uploads/d48ac5c8-018b-4bc0-b9bf-86fdb1bca53d.jpg",
+      "PackagePath": "staticwebassets/uploads/d48ac5c8-018b-4bc0-b9bf-86fdb1bca53d.jpg"
+    },
+    {
       "Id": "/home/ok/okkeianBlog/wwwroot/uploads/default-thumbnail.jpg",
       "PackagePath": "staticwebassets/uploads/default-thumbnail.jpg"
+    },
+    {
+      "Id": "/home/ok/okkeianBlog/wwwroot/uploads/ff525f82-570f-473d-9861-db7bedb2351d.jpg",
+      "PackagePath": "staticwebassets/uploads/ff525f82-570f-473d-9861-db7bedb2351d.jpg"
     },
     {
       "Id": "/home/ok/okkeianBlog/wwwroot/uploads/gyokusenji_001.jpg",
@@ -351,6 +407,18 @@
     {
       "Id": "/home/ok/okkeianBlog/wwwroot/uploads/rc2npgjh.qq3.png",
       "PackagePath": "staticwebassets/uploads/rc2npgjh.qq3.png"
+    },
+    {
+      "Id": "/home/ok/okkeianBlog/wwwroot/uploads/ã_¹ã_¯ã_ªã_¼ã_³ã_·ã_§ã__ã___2024-10-25_132544-transformed.png",
+      "PackagePath": "staticwebassets/uploads/ã_¹ã_¯ã_ªã_¼ã_³ã_·ã_§ã__ã___2024-10-25_132544-transformed.png"
+    },
+    {
+      "Id": "/home/ok/okkeianBlog/wwwroot/uploads/ウサギ月.png",
+      "PackagePath": "staticwebassets/uploads/ウサギ月.png"
+    },
+    {
+      "Id": "/home/ok/okkeianBlog/wwwroot/uploads/オードリーヘップバーン_color (2).jpg",
+      "PackagePath": "staticwebassets/uploads/オードリーヘップバーン_color (2).jpg"
     },
     {
       "Id": "obj/Debug/net8.0/staticwebassets/msbuild.build.okkeianBlog.props",

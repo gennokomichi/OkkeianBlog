@@ -1,0 +1,53 @@
+.rss-section {
+    margin: 2rem 1rem;
+    padding: 1rem;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+}
+
+.rss-section h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+/* スクロール用のボックス */
+.rss-box {
+    max-height: 400px;           /* 高さを制限 */
+    overflow-y: auto;            /* 縦スクロール */
+    overflow-x: hidden;          /* 横スクロールは不要 */
+    padding-right: 10px;         /* スクロールバーに隠れない余白 */
+}
+
+/* レスポンシブ対応で柔軟な横幅 */
+.rss-box ul {
+    padding-left: 1rem;
+    margin: 0;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.rss-box li {
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+    color: #333;
+    line-height: 1.5;
+}
+
+.rss-box a {
+    color: #007bff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.rss-box a:hover {
+    color: #0056b3;
+}
+
+.rss-box::-webkit-scrollbar {
+    width: 8px;
+}
+
+.rss-box::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+}

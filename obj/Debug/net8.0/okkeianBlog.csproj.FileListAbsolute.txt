@@ -1,11 +1,3 @@
-/home/ok/okkeianBlog/obj/Debug/net8.0/okkeianBlog.csproj.AssemblyReference.cache
-/home/ok/okkeianBlog/obj/Debug/net8.0/okkeianBlog.GeneratedMSBuildEditorConfig.editorconfig
-/home/ok/okkeianBlog/obj/Debug/net8.0/okkeianBlog.AssemblyInfoInputs.cache
-/home/ok/okkeianBlog/obj/Debug/net8.0/okkeianBlog.AssemblyInfo.cs
-/home/ok/okkeianBlog/obj/Debug/net8.0/okkeianBlog.csproj.CoreCompileInputs.cache
-/home/ok/okkeianBlog/obj/Debug/net8.0/okkeianBlog.MvcApplicationPartsAssemblyInfo.cache
-/home/ok/okkeianBlog/obj/Debug/net8.0/okkeianBlog.RazorAssemblyInfo.cache
-/home/ok/okkeianBlog/obj/Debug/net8.0/okkeianBlog.RazorAssemblyInfo.cs
 /home/ok/okkeianBlog/bin/Debug/net8.0/appsettings.Development.json
 /home/ok/okkeianBlog/bin/Debug/net8.0/appsettings.json
 /home/ok/okkeianBlog/bin/Debug/net8.0/okkeianBlog.staticwebassets.runtime.json
@@ -86,6 +78,15 @@
 /home/ok/okkeianBlog/bin/Debug/net8.0/tr/Microsoft.CodeAnalysis.Workspaces.resources.dll
 /home/ok/okkeianBlog/bin/Debug/net8.0/zh-Hans/Microsoft.CodeAnalysis.Workspaces.resources.dll
 /home/ok/okkeianBlog/bin/Debug/net8.0/zh-Hant/Microsoft.CodeAnalysis.Workspaces.resources.dll
+/home/ok/okkeianBlog/obj/Debug/net8.0/okkeianBlog.csproj.AssemblyReference.cache
+/home/ok/okkeianBlog/obj/Debug/net8.0/okkeianBlog.GeneratedMSBuildEditorConfig.editorconfig
+/home/ok/okkeianBlog/obj/Debug/net8.0/okkeianBlog.AssemblyInfoInputs.cache
+/home/ok/okkeianBlog/obj/Debug/net8.0/okkeianBlog.AssemblyInfo.cs
+/home/ok/okkeianBlog/obj/Debug/net8.0/okkeianBlog.csproj.CoreCompileInputs.cache
+/home/ok/okkeianBlog/obj/Debug/net8.0/okkeianBlog.MvcApplicationPartsAssemblyInfo.cache
+/home/ok/okkeianBlog/obj/Debug/net8.0/okkeianBlog.RazorAssemblyInfo.cache
+/home/ok/okkeianBlog/obj/Debug/net8.0/okkeianBlog.RazorAssemblyInfo.cs
+/home/ok/okkeianBlog/obj/Debug/net8.0/okkeianBlog.sourcelink.json
 /home/ok/okkeianBlog/obj/Debug/net8.0/staticwebassets.build.json
 /home/ok/okkeianBlog/obj/Debug/net8.0/staticwebassets.development.json
 /home/ok/okkeianBlog/obj/Debug/net8.0/staticwebassets/msbuild.okkeianBlog.Microsoft.AspNetCore.StaticWebAssets.props

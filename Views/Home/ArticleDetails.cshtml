@@ -1,6 +1,33 @@
 @model OkkeianBlog.Models.Article
-
+<head>
 <link rel="stylesheet" href="~/css/article.css" />
+<link rel="stylesheet" href="~/css/sidebar.css" />
+<link rel="stylesheet" href="~/css/comment.css">
+<link rel="stylesheet" href="~/css/rss-feed.css" />
+</head>
+
+@section RssSection {
+    <div class="rss-section">
+        <h2>新着RSS</h2>
+        <div class="rss-box">
+            @if (ViewData["RssItems"] is IEnumerable<OkkeianBlog.Models.RssItemModel> rssItems)
+            {
+                <ul>
+                    @foreach (var item in rssItems)
+                    {
+                        <li><a href="@item.Link" target="_blank">@item.Title</a></li>
+                    }
+                </ul>
+            }
+            else
+            {
+                <p>RSSフィードは現在読み込まれていません。</p>
+            }
+        </div>
+    </div>
+}
+
+
 
 <h1>@Model.Title</h1>
 <p>投稿日時: @Model.PublishDate.ToString("yyyy年MM月dd日 HH:mm")</p>
@@ -8,32 +35,72 @@
 <!-- サムネイル画像の表示 -->
 @if (!string.IsNullOrEmpty(Model.ThumbnailPath))
 {
-    <div>
-        <img src="@(string.IsNullOrEmpty(Model.ThumbnailPath) ? Url.Content("~/uploads/default-thumbnail.jpg") : Model.ThumbnailPath)" alt="サムネイル画像" />
+    <div class="thumbnail-box">
+        <div>
+            <img src="@Url.Content(Model.ThumbnailPath)" alt="サムネイル画像" />
+        </div>
     </div>
 }
-
-<p>@Model.Content</p>  <!-- 記事の内容 -->
-
-<h3>コメント</h3>
-@foreach (var comment in Model.Comments.OrderByDescending(c => c.PostDate))
+else
 {
-    <div class="comment">
-        <p><strong>@comment.Author</strong>: @comment.Content</p>
-        <p>@comment.PostDate.ToString("yyyy年MM月dd日 HH:mm")</p>
+    <div class="thumbnail-box">
+        <div>
+            <img src="@Url.Content("~/uploads/default-thumbnail.jpg")" alt="デフォルトサムネイル" />
+        </div>
     </div>
 }
 
-<h3>コメント投稿</h3>
-<form method="post" asp-action="PostComment">
-    <input type="hidden" name="articleId" value="@Model.Id" />
-    <div>
-        <label for="author">お名前:</label>
-        <input type="text" name="author" id="author" required />
+
+<div class="article-excerpt">
+    @Html.Raw(Model.Content ?? "内容なし")
+</div>
+
+
+
+<h3>この記事へのコメント</h3>
+
+@if (Model.Comments != null && Model.Comments.Any())
+{
+    <div class="comment-list">
+        @foreach (var (comment, index) in Model.Comments
+            .OrderBy(c => c.PostDate)  // 投稿日時の昇順で表示
+            .Select((c, i) => (c, i + 1)))
+        {
+            <div class="comment-item">
+               <p class="comment-header">
+                    <span class="comment-index">@index.</span>
+                    <span class="comment-author">@comment.Author</span>  
+                    <span class="comment-date">投稿日：@comment.PostDate.ToString("yyyy年MM月dd日 HH:mm")</span>
+                </p>
+
+                <p class="comment-content">@comment.Content</p>
+            </div>
+        }
     </div>
-    <div>
-        <label for="content">コメント:</label>
-        <textarea name="content" id="content" required></textarea>
-    </div>
-    <button type="submit">投稿</button>
-</form>
+}
+else
+{
+    <p>まだコメントはありません。</p>
+}
+
+
+
+<div class="comment-form">
+    <h3>コメントを投稿する</h3>
+    <form asp-action="PostComment" asp-controller="Home" method="post">
+        <input type="hidden" name="ArticleId" value="@Model.Id" />
+
+        <div class="form-group">
+            <label for="author">名前</label>
+            <input type="text" id="author" name="Author" class="form-control" placeholder="名前を入力" required>
+        </div>
+
+        <div class="form-group">
+            <label for="content">コメント</label>
+            <textarea id="content" name="Content" class="form-control" rows="4" placeholder="コメントを入力" required></textarea>
+        </div>
+
+        <button type="submit" class="btn-submit">投稿する</button>
+    </form>
+</div>
+

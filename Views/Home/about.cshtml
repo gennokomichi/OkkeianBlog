@@ -1,0 +1,64 @@
+@model OkkeianBlog.Models.ViewModels.HomeIndexViewModel
+@using System.Text.RegularExpressions
+@using OkkeianBlog.Helpers
+
+@{
+    ViewData["Title"] = "About Us";
+}
+
+<!-- AboutページのCSSを追加する場合 -->
+<head>
+    <link rel="stylesheet" href="~/css/about.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/css/article.css" />
+<link rel="stylesheet" href="~/css/sidebar.css" />
+<link rel="stylesheet" href="~/css/rss-feed.css"/>
+
+</head>
+
+
+@section RssSection {
+<!-- ここからRSSセクションの流用 -->
+<div class="rss-section">
+    <h2>新着RSS</h2>
+    <div class="rss-box">
+        @if (ViewData["RssItems"] is IEnumerable<OkkeianBlog.Models.RssItemModel> rssItems && rssItems.Any())
+        {
+            <ul>
+                @foreach (var item in rssItems)
+                {
+                    <li>
+                        <a href="@item.Link" target="_blank">@item.Title</a>
+                    </li>
+                }
+            </ul>
+        }
+        else
+        {
+            <p>RSSフィードは現在読み込まれていません。</p>
+        }
+    </div>
+</div>
+}
+<!-- ここまでRSSセクション -->
+
+
+<h1>@ViewData["Title"]</h1>
+
+<p>私たちについての情報をここに記載します。</p>
+
+<div class="about-content">
+    <h2>私たちのミッション</h2>
+    <p>ここにミッションステートメントなどを記載します。</p>
+    
+    <h2>私たちの歴史</h2>
+    <p>ここに会社の歴史や背景を記載します。</p>
+    
+    <h2>お問い合わせ</h2>
+    <p>こちらにお問い合わせ情報やサポート情報を記載します。</p>
+</div>
+
+<!-- Optional: 画像やアイコンを追加することもできます -->
+<div class="about-image">
+    <img src="~/images/about-image.jpg" alt="私たちのイメージ" />
+</div>

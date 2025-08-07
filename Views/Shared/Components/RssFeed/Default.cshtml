@@ -1,0 +1,46 @@
+@model IEnumerable<OkkeianBlog.Models.RssItemModel>
+
+<head>
+    <link rel="stylesheet" href="~/css/rss-feed.css" />
+</head>
+
+<div class="rss-feed">
+    <h5>最新の相互RSS</h5>
+
+    @if (!Model.Any())
+    {
+        <p>現在、取得できるRSS記事はありません。</p>
+    }
+    else
+    {
+        <ul>
+            @foreach (var item in Model)
+            {
+                <li>
+                    <a href="@item.Link" target="_blank">@item.Title</a>  <!-- タイトルをリンクとして表示 -->
+
+                    <!-- description または content:encoded を表示 -->
+                    @if (!string.IsNullOrEmpty(item.Description))
+                    {
+                        <div class="rss-description">
+                            @Html.Raw(item.Description)  <!-- HTMLをそのまま表示 -->
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="rss-description">
+                            <em>説明はありません。</em>
+                        </div>
+                    }
+
+                    @if (!string.IsNullOrEmpty(item.ContentEncoded))
+                    {
+                        <div class="rss-content">
+                            @Html.Raw(item.ContentEncoded)  <!-- HTMLをそのまま表示 -->
+                        </div>
+                    }
+                </li>
+            }
+        </ul>
+    }
+</div>

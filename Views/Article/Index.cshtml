@@ -1,60 +1,95 @@
-@model IEnumerable<OkkeianBlog.Models.ArticleSummaryViewModel>
+@model OkkeianBlog.Models.ViewModels.ArticleIndexViewModel
+
+@using System.Text.RegularExpressions
+@using OkkeianBlog.Helpers
+
 
 <head>
     <!-- 他のヘッダー要素 -->
 
     <!-- article.css を全ページで読み込む -->
     <link rel="stylesheet" href="~/css/article.css" />
+    <link rel="stylesheet" href="~/css/sidebar.css" />
+    <link rel="stylesheet" href="~/css/rss-feed.css" />
 </head>
+
+
+  @section RssSection {
+    <div class="rss-section">
+    <h2>新着RSS</h2>
+    <div class="rss-box">
+    @if (Model.RssItems != null && Model.RssItems.Any())
+    {
+        <ul>
+            @foreach (var item in Model.RssItems)
+            {
+                <li>
+                    <a href="@item.Link" target="_blank">@item.Title</a>
+                </li>
+            }
+        </ul>
+    }
+    else
+    {
+        <p>RSSフィードは現在読み込まれていません。</p>
+    }
+</div>
+</div>
+}
+
 
 
 <h2>記事一覧</h2>
 
 <div class="article-list">
-    @foreach (var article in Model)
+    @foreach (var article in Model.Articles)
     {
-        @if (article != null)
+        if (article != null)
         {
             <div class="article-card">
-                <!-- サムネイル画像の表示 -->
-                @if (!string.IsNullOrEmpty(article.Thumbnail))
-                {
+                <!-- リンクで全体を囲む -->
+                <a href="@Url.Action("ArticleDetails", "Home", new { id = article.Id })">
+                    <!-- サムネイル画像の表示 -->
                     <div class="article-thumbnail">
-                       
-                        <img src="@Url.Content(article.Thumbnail)" alt="サムネイル画像">
-                    </div>
-                }
-                else
-                {
-                    <div class="article-thumbnail">
-                        <img src="@Url.Content("/uploads/default-thumbnail.jpg")" alt="デフォルトサムネイル">
-                    </div>
-                }
-
-                <!-- 記事内容 -->
-                <div class="article-content">
-                    <!-- 記事タイトル -->
-                    <h3 class="article-title">
-                        <a href="@Url.Action("ArticleDetails", "Home", new { id = article.Id })">@article.Title</a>
-                    </h3>
-
-                    <!-- 記事の抜粋 -->
-                    <div class="article-excerpt">
-                         @Html.Raw(article.Content)
+                        @if (!string.IsNullOrWhiteSpace(article.ThumbnailPath))
+                        {
+                            <img src="@Url.Content(article.ThumbnailPath)" alt="サムネイル画像">
+                        }
+                        else
+                        {
+                            <img src="@Url.Content("~/uploads/default-thumbnail.jpg")" alt="デフォルトサムネイル">
+                        }
                     </div>
 
+                    <!-- 記事内容 -->
+                    <div class="article-content">
+                        <h3 class="article-title">
+                            @article.Title
+                        </h3>
 
-                    <!-- 投稿日 -->
-                    @if (article.PublishDate != DateTime.MinValue)
-                    {
-                        <span class="article-date">（@article.PublishDate.ToString("yyyy年MM月dd日")）</span>
-                    }
-                    else
-                    {
-                        <span class="article-date">投稿日なし</span>
-                    }
-                </div>
+                        <!-- 記事の抜粋 -->
+                        <div class="article-excerpt">
+                            @if (!string.IsNullOrEmpty(article.Content))
+                            {
+                                @article.Content.ToExcerpt(100)
+                            }
+                            else
+                            {
+                                <span>内容なし</span>
+                            }
+                        </div>
+                        @if (article.PublishDate != DateTime.MinValue)
+                        {
+                            <span class="article-date">（@article.PublishDate.ToString("yyyy年MM月dd日")）</span>
+                        }
+                        else
+                        {
+                            <span class="article-date">投稿日なし</span>
+                        }
+                    </div>
+                </a>
             </div>
         }
     }
 </div>
+

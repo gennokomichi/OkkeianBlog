@@ -10,7 +10,9 @@
 
 <h1>@ViewData["Title"]</h1>
 
-<form asp-action="Edit" enctype="multipart/form-data"> <!-- enctype追加 -->
+<form asp-action="Edit" enctype="multipart/form-data">
+    <input type="hidden" asp-for="Id" /> <!-- 記事IDを送信するための hidden フィールド -->
+
     <div class="form-group">
         <label asp-for="Title" class="control-label"></label>
         <input asp-for="Title" class="form-control" required />
@@ -35,11 +37,19 @@
         <span asp-validation-for="PublishDate" class="text-danger"></span>
     </div>
 
-    <!-- サムネイル画像アップロード -->
+    <!-- 🔹 現在のサムネイルを表示 -->
+    @if (!string.IsNullOrEmpty(Model.ThumbnailPath))
+    {
+        <div class="form-group">
+            <label>現在のサムネイル</label><br>
+            <img src="@Model.ThumbnailPath?v=@DateTime.Now.Ticks" alt="サムネイル" style="max-width: 200px;">
+        </div>
+    }
+
+    <!-- 🔹 新しいサムネイル画像をアップロード -->
     <div class="form-group">
-        <label for="Thumbnail" class="control-label">サムネイル画像</label>
+        <label for="Thumbnail" class="control-label">新しいサムネイル画像</label>
         <input type="file" id="Thumbnail" name="Thumbnail" class="form-control" />
-        <span class="text-danger"></span>
     </div>
 
     <button type="submit" class="btn btn-primary">保存</button>
@@ -48,4 +58,5 @@
 <a href="@Url.Action("Index", "Admin")">記事一覧に戻る</a>
 
 <script src="https://cdn.ckeditor.com/ckeditor5/40.0.0/classic/ckeditor.js"></script>
+
 <script src="~/js/ckeditor-init.js"></script>

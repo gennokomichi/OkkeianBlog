@@ -1,0 +1,80 @@
+@model IEnumerable<OkkeianBlog.Models.ArticleSummaryViewModel>
+
+<head>
+    <link rel="stylesheet" href="~/css/article.css" />
+    <link rel="stylesheet" href="~/css/sidebar.css" />
+    <link rel="stylesheet" href="~/css/rss-feed.css" />
+</head>
+
+
+  @section RssSection {
+    <div class="rss-section">
+    <h2>新着RSS</h2>
+    <div class="rss-box">
+    @if (ViewData["RssItems"] is IEnumerable<OkkeianBlog.Models.RssItemModel> rssItems)
+{
+    <ul>
+        @foreach (var item in rssItems)
+        {
+            <li><a href="@item.Link" target="_blank">@item.Title</a></li>
+        }
+    </ul>
+}
+else
+{
+    <p>RSSフィードは現在読み込まれていません。</p>
+}
+
+</div>
+</div>
+}
+
+
+<h1>@ViewData["Year"]年 @ViewData["Month"]月のアーカイブ</h1>
+
+<div class="article-list">
+    @foreach (var article in Model)
+    {
+        @if (article != null)
+        {
+            <div class="article-card">
+                <!-- サムネイル画像の表示 -->
+                @if (!string.IsNullOrEmpty(article.ThumbnailPath))
+                {
+                    <div class="article-thumbnail">
+                        <img src="@Url.Content(article.ThumbnailPath)" alt="サムネイル画像">
+                    </div>
+                }
+                else
+                {
+                    <div class="article-thumbnail">
+                        <img src="@Url.Content("/uploads/default-thumbnail.jpg")" alt="デフォルトサムネイル">
+                    </div>
+                }
+
+                <!-- 記事内容 -->
+                <div class="article-content">
+                    <!-- 記事タイトル -->
+                    <h3 class="article-title">
+                        <a href="@Url.Action("ArticleDetails", "Home", new { id = article.Id })">@article.Title</a>
+                    </h3>
+
+                    <!-- 記事の抜粋 -->
+                    <div class="article-excerpt">
+                        @Html.Raw(article.Content)  <!-- 記事の抜粋内容 -->
+                    </div>
+
+                    <!-- 投稿日 -->
+                    @if (article.PublishDate != DateTime.MinValue)
+                    {
+                        <span class="article-date">（@article.PublishDate.ToString("yyyy年MM月dd日")）</span>
+                    }
+                    else
+                    {
+                        <span class="article-date">投稿日なし</span>
+                    }
+                </div>
+            </div>
+        }
+    }
+</div>

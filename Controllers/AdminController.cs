@@ -7,11 +7,14 @@ using System;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 
 namespace OkkeianBlog.Controllers
 {
+    [Authorize]
     public class AdminController : Controller
     {
+        
         private readonly ApplicationDbContext _context;
 
         public AdminController(ApplicationDbContext context)
@@ -106,9 +109,9 @@ namespace OkkeianBlog.Controllers
         }
 
         // 記事編集（POST）
-       [HttpPost]
+     [HttpPost]
 [ValidateAntiForgeryToken]
-public async Task<IActionResult> Edit(int id, Article model, IFormFile Thumbnail)
+public async Task<IActionResult> Edit(int id, Article model, IFormFile? Thumbnail)
 {
     if (id != model.Id)
     {
@@ -119,12 +122,17 @@ public async Task<IActionResult> Edit(int id, Article model, IFormFile Thumbnail
     {
         try
         {
-            // 既存のデータを取得
+            // 🔹 既存の記事を取得
             var existingArticle = await _context.Articles.FindAsync(id);
             if (existingArticle == null)
             {
                 return NotFound();
             }
+
+            // 🔹 タイトル・内容の更新
+            existingArticle.Title = model.Title;
+            existingArticle.Content = model.Content;
+            existingArticle.PublishedAt = DateTime.Now; // 必要なら更新
 
             // 🔹 新しいサムネイルがアップロードされた場合のみ変更
             if (Thumbnail != null && Thumbnail.Length > 0)
@@ -141,13 +149,8 @@ public async Task<IActionResult> Edit(int id, Article model, IFormFile Thumbnail
                 existingArticle.ThumbnailPath = "/uploads/" + fileName;
             }
 
-            // 🔹 変更があった内容を適用
-            existingArticle.Title = model.Title;
-            existingArticle.Content = model.Content;
-            existingArticle.PublishedAt = DateTime.Now;
-
-            // 🔹 データを更新
-            _context.Update(existingArticle);
+            // 🔹 明示的にエンティティの状態を更新
+            _context.Entry(existingArticle).State = EntityState.Modified;
             await _context.SaveChangesAsync();
         }
         catch (DbUpdateConcurrencyException)
@@ -192,6 +195,40 @@ public async Task<IActionResult> Edit(int id, Article model, IFormFile Thumbnail
             _context.Articles.Remove(article);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
+        }
+
+        // 画像アップロード
+        [HttpPost]
+        public async Task<IActionResult> UploadImage(IFormFile upload)
+        {
+            if (upload == null || upload.Length == 0)
+            {
+                Console.WriteLine("アップロードされたファイルがありません。");
+                return Json(new { uploaded = 0, error = new { message = "ファイルが見つかりません。" } });
+            }
+
+            try
+            {
+                var fileName = Guid.NewGuid().ToString() + Path.GetExtension(upload.FileName);
+                var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/uploads", fileName);
+
+                Console.WriteLine($"画像を保存: {filePath}");
+
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    await upload.CopyToAsync(stream);
+                }
+
+                var imageUrl = Url.Content("~/uploads/" + fileName);
+                Console.WriteLine($"アップロード成功: {imageUrl}");
+
+                return Json(new { uploaded = 1, fileName = fileName, url = imageUrl });
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"エラー発生: {ex.Message}");
+                return Json(new { uploaded = 0, error = new { message = "画像のアップロードに失敗しました。" } });
+            }
         }
     }
 }

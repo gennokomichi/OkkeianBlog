@@ -1,0 +1,12 @@
+/home/ok/okkeianBlog/bin/Release/net8.0/win-x86/publish/okkeianBlog.exe
+/home/ok/okkeianBlog/bin/Release/net8.0/win-x86/publish/appsettings.Development.json
+/home/ok/okkeianBlog/bin/Release/net8.0/win-x86/publish/appsettings.json
+/home/ok/okkeianBlog/bin/Release/net8.0/win-x86/publish/okkeianBlog.dll
+/home/ok/okkeianBlog/bin/Release/net8.0/win-x86/publish/okkeianBlog.runtimeconfig.json
+/home/ok/okkeianBlog/bin/Release/net8.0/win-x86/publish/okkeianBlog.pdb
+/home/ok/okkeianBlog/bin/Release/net8.0/win-x86/publish/Microsoft.EntityFrameworkCore.dll
+/home/ok/okkeianBlog/bin/Release/net8.0/win-x86/publish/Microsoft.EntityFrameworkCore.Abstractions.dll
+/home/ok/okkeianBlog/bin/Release/net8.0/win-x86/publish/Microsoft.EntityFrameworkCore.Relational.dll
+/home/ok/okkeianBlog/bin/Release/net8.0/win-x86/publish/MySqlConnector.dll
+/home/ok/okkeianBlog/bin/Release/net8.0/win-x86/publish/Pomelo.EntityFrameworkCore.MySql.dll
+/home/ok/okkeianBlog/bin/Release/net8.0/win-x86/publish/okkeianBlog.deps.json

@@ -1,0 +1,28 @@
+/* about.css */
+
+h1 {
+    font-size: 2.5em;
+    color: #4CAF50;
+    text-align: center;
+}
+
+.about-content {
+    margin: 20px;
+}
+
+.about-content h2 {
+    color: #333;
+    font-size: 1.8em;
+}
+
+.about-content p {
+    font-size: 1.2em;
+    line-height: 1.6;
+}
+
+.about-image img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 20px auto;
+}

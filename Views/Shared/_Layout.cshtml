@@ -1,26 +1,27 @@
-﻿<!DOCTYPE html>
+﻿
+<!DOCTYPE html>
 <html lang="ja">
 
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - okkeianBlog</title>
+    <meta name="google-adsense-account" content="ca-pub-4058036696253914">
+    <title>@ViewData["Title"] - 奥憩庵</title>
     
     <!-- Bootstrap の CSS -->
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
 
     <!-- 共通のサイト用 CSS -->
+    <link rel="stylesheet" href="~/css/rss-feed.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/site.css"  asp-append-version="true" />
+     <link rel="stylesheet" href="~/css/article.css"  asp-append-version="true" />
     <link rel="stylesheet" href="~/css/sidebar.css"  asp-append-version="true" />
     <link rel="stylesheet" href="~/css/header.css" asp-append-version="true" />
+     
    
 
     <!-- ページごとの CSS -->
-    @if (ViewData["Title"]?.ToString() == "Home Page")
-    {
-        @:<link rel="stylesheet" href="~/css/homeindex.css" />
-    }
-    else if (ViewData["Title"]?.ToString() == "Article Details")
+    @if(ViewData["Title"]?.ToString() == "Article Details")
     {
         @:<link rel="stylesheet" href="~/css/article.css" />
     }
@@ -39,7 +40,7 @@
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">okkeianBlog</a>
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">奥憩庵</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -50,47 +51,88 @@
                             <a class="nav-link text-dark" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                            <a class="nav-link text-dark" asp-controller="Home" asp-action="About">About</a>
                         </li>
+
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-controller="Article" asp-action="Index">記事一覧</a>
                         </li>
+                        @* 🔽 ここに管理者専用リンク *@
+                    @if (User.Identity?.IsAuthenticated == true)
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-controller="Admin" asp-action="Index">管理パネル</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-controller="Account" asp-action="Logout">ログアウト</a>
+                        </li>
+                    }
                     </ul>
                 </div>
             </div>
         </nav>
     </header>
+</header>
 
+<!-- ★ここにセクション -->
+@RenderSection("RssSection", required: false)
+<!-- ★ここまで -->
+ 
+
+<!-- メインコンテンツ -->
    <div class="container">
     <div class="row">
        
 
         <!-- 左サイドバー -->
-        <aside class="col-md-3 sidebar">
+        <aside class="col-md-3 col-12 sidebar">
           
             <h3>メニュー</h3>
             <ul>
                 <li><a href="#">トップ</a></li>
-                <li><a href="#">アーカイブ</a></li>
+            
                 <li><a href="#">他ブログリンク</a></li>
             </ul>
             
+            <div class="sidebar-section">
+                 @if (ViewData["ArchiveTitle"] != null)
+        {
+            <h2>@ViewData["ArchiveTitle"]</h2> <!-- サイドバーに表示 -->
+        }
+                <h5>アーカイブ</h5>
+                <ul class="archive-list">
+                    @if (ViewData["Archives"] is IEnumerable<OkkeianBlog.Models.ViewModels.ArchiveViewModel> archives)
+                            {
+                               
+                                    @foreach (var archive in archives)
+                                    {
+                                        <li>
+                                            <a href="@Url.Action("Archive", "Article", new { year = archive.Year, month = archive.Month })">
+                                                @archive.Year @archive.Month (@archive.ArticleCount)
+                                            </a>
+                                        </li>
+                                    }
+                                
+                            }
+                </ul>
+            </div>
+
+
             <h5>人気記事</h5>
             <div class="popular-articles">
                 @if (ViewData["PopularArticles"] is IEnumerable<OkkeianBlog.Models.ArticleSummaryViewModel> popularArticles)
                 {
                   @foreach (var article in popularArticles)
                     {
-                        <div class="article-card">
-                            <a href="@Url.Action("ArticleDetails", "Home", new { id = article.Id })">
-                                <!-- サムネイル画像の表示 -->
-                               <img src="@Url.Content("/uploads/default-thumbnail.jpg")" alt="サムネイル画像" class="sidebar-thumbnail">
-
-
-                                <h6>@article.Title</h6>
-                                <p class="comment-count">@article.CommentCount コメント</p>
-                            </a>
-                        </div>
+                       <div class="article-card">
+                <a href="@Url.Action("ArticleDetails", "Home", new { id = article.Id })">
+                    <!-- サムネイル画像の表示 -->
+                    <img src="@Url.Content(!string.IsNullOrEmpty(article.ThumbnailPath) ? article.ThumbnailPath : "/uploads/default-thumbnail.jpg")" 
+                         alt="サムネイル画像" class="sidebar-thumbnail">
+                    <h6>@article.Title</h6>
+                    <p class="comment-count">@article.CommentCount コメント</p>
+                </a>
+            </div>
                     }
 
 
@@ -103,15 +145,16 @@
         </aside> <!-- サイドバーの閉じタグ -->
         
             <!-- メインコンテンツ -->
-            <main class="col-md-9">
+            <main class="col-md-9 col-12 main-content">
+
                 @RenderBody() <!-- メインコンテンツをここに表示 -->
             </main>
         </div>
     </div>
 
     <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2025 - okkeianBlog - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        <div class="footer-container">
+            &copy; 2025 - 奥憩庵 - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
